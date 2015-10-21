@@ -1,6 +1,8 @@
-# Codec
+// Copyright (c) 2012-2015 Ugorji Nwoke. All rights reserved.
+// Use of this source code is governed by a MIT license found in the LICENSE file.
 
-High Performance, Feature-Rich Idiomatic Go codec/encoding library for
+/*
+High Performance, Feature-Rich Idiomatic Go codec/encoding library for 
 binc, msgpack, cbor, json.
 
 Supported Serialization formats are:
@@ -15,20 +17,17 @@ To install:
 
     go get github.com/ugorji/go/codec
 
-This package understands the `unsafe` tag, to allow using unsafe semantics:
+This package understands the 'unsafe' tag, to allow using unsafe semantics:
 
   - When decoding into a struct, you need to read the field name as a string 
     so you can find the struct field it is mapped to.
-    Using `unsafe` will bypass the allocation and copying overhead of `[]byte->string` conversion.
+    Using `unsafe` will bypass the allocation and copying overhead of []byte->string conversion.
 
-To use it, you must pass the `unsafe` tag during install:
+To install using unsafe, pass the 'unsafe' tag:
 
-```
-go install -tags=unsafe github.com/ugorji/go/codec 
-```
+    go get -tags=unsafe github.com/ugorji/go/codec
 
-Online documentation: http://godoc.org/github.com/ugorji/go/codec  
-Detailed Usage/How-to Primer: http://ugorji.net/blog/go-codec-primer
+For detailed usage information, read the primer at http://ugorji.net/blog/go-codec-primer .
 
 The idiomatic Go support is as seen in other encoding packages in
 the standard library (ie json, xml, gob, etc).
@@ -70,11 +69,11 @@ Rich Feature Set includes:
   - Provides a RPC Server and Client Codec for net/rpc communication protocol.
   - Handle unique idiosynchracies of codecs e.g. 
     - For messagepack, configure how ambiguities in handling raw bytes are resolved 
-    - For messagepack, provide rpc server/client codec to support
+    - For messagepack, provide rpc server/client codec to support 
       msgpack-rpc protocol defined at:
       https://github.com/msgpack-rpc/msgpack-rpc/blob/master/spec.md
-
-## Extension Support
+  
+Extension Support
 
 Users can register a function to handle the encoding or decoding of
 their custom types.
@@ -92,12 +91,12 @@ encoded as an empty map because it has no exported fields, while UUID
 would be encoded as a string. However, with extension support, you can
 encode any of these however you like.
 
-## RPC
+RPC
 
 RPC Client and Server Codecs are implemented, so the codecs can be used
 with the standard net/rpc package.
 
-## Usage
+Usage
 
 Typical usage model:
 
@@ -145,4 +144,7 @@ Typical usage model:
     rpcCodec := codec.GoRpc.ClientCodec(conn, h)
     //OR rpcCodec := codec.MsgpackSpecRpc.ClientCodec(conn, h)
     client := rpc.NewClientWithCodec(rpcCodec)
+
+*/
+package codec
 
